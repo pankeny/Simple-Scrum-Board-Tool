@@ -1,1 +1,1 @@
-"# Simple-Scrum-Board-Tool" 
+# Simple-Scrum-Board-Tool
