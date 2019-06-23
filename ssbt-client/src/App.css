@@ -38,7 +38,10 @@
 .navbar {
   background-color: #3f3957;
 }
-
+.navitem {
+  color: red;
+  display: inline-block;
+}
 /* ################################# FOOTER ################################# */
 .footer {
   background-color: #3f3957;

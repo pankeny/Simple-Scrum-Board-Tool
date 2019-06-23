@@ -14,6 +14,11 @@ import {
   DropdownItem
 } from "reactstrap";
 
+import brand from "../../assets/logo.png";
+import add_project from "../../assets/add-project-24.png";
+import projects from "../../assets/projects-filled-24.png";
+import profile from "../../assets/icons8-name-filled-24.png";
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -31,31 +36,41 @@ class Header extends Component {
 
   render() {
     return (
-      <Navbar className="navbar" dark expand="md">
-        <NavbarBrand href="/">SSBT</NavbarBrand>
-        <NavbarToggler onClick={this.toggle} />
-        <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink href="#">New Project</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#">Projects</NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Profile
-              </DropdownToggle>
-              <DropdownMenu className="drop-down-m" right>
-                <DropdownItem>View Profile</DropdownItem>
-                <DropdownItem>Edit Profile</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Logout</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
-        </Collapse>
-      </Navbar>
+      <div>
+        <Navbar className="navbar" dark expand="md">
+          <img src={brand} className="mx-2" />
+          <NavbarBrand href="/">SSBT</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="#">
+                  <img src={add_project} className="mx-2" />
+                  New Project
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#">
+                  <img src={projects} className="mx-2" />
+                  Projects
+                </NavLink>
+              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  <img src={profile} className="mx-2" />
+                  Profile
+                </DropdownToggle>
+                <DropdownMenu className="drop-down-m" right>
+                  <DropdownItem>View Profile</DropdownItem>
+                  <DropdownItem>Edit Profile</DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>Logout</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div>
     );
   }
 }
