@@ -34,6 +34,10 @@
   visibility: hidden;
 }
 
+.justify-text {
+  text-align: justify;
+}
+
 /* ################################# DASHBOARD ################################# */
 .new-project-section {
   text-align: left;
@@ -49,19 +53,36 @@ hr {
   size: 2em;
 }
 
-.new-project-button {
+.project-button {
   background-color: #f47c62 !important;
+  border-color: #f6f7f2 !important;
 }
 
-.new-project-button:hover,
-.new-project-button:active,
-.new-project-button:focus {
-  background-color: #ec4c28 !important;
-  border-color: #f6f7f2 !important;
+.project-button:hover,
+.project-button:active,
+.project-button:focus {
+  background-color: #f6f7f2 !important;
+  border-color: #f47c62 !important;
+  color: #f47c62 !important;
 }
 
 .project-item {
   background-color: #d9b482;
+  min-height: 100px;
+  overflow: auto;
+}
+
+.project-item * {
+  vertical-align: middle;
+}
+
+.project-item button {
+  width: 90% !important;
+}
+
+.project-title {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* ################################# HEADER ################################# */
