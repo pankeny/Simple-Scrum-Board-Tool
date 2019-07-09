@@ -55,6 +55,7 @@ hr {
 .project-button {
   background-color: #f47c62 !important;
   border-color: #f6f7f2 !important;
+  color: #f6f7f2 !important;
 }
 
 .project-button:hover,
