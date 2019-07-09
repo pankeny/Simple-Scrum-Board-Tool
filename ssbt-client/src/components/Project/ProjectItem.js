@@ -8,13 +8,12 @@ class ProjectItem extends Component {
       <div className="project-item container-fluid mx-auto mt-4">
         <Row>
           <Col lg={{ size: 2 }} className="project-user my-auto">
-            <img src={avatar} P />
-            <a className="d-block ml-4">Username</a>
+            <img src={avatar} alt="user avatar" />
+            <p className="d-block ml-4">Username</p>
           </Col>
           <Col lg={{ size: 6 }} className="justify-text">
-            <a className="project-title">Example Project</a>
-            <br />
-            <a>
+            <p className="project-title">Example Project</p>
+            <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
               suscipit auctor ligula non condimentum. Fusce nec arcu nec lorem
               consequat vulputate. Aliquam quis vestibulum sem, nec venenatis
@@ -23,7 +22,7 @@ class ProjectItem extends Component {
               luctus nisi vitae augue tempus, feugiat malesuada urna
               condimentum. Suspendisse at rutrum magna. Integer accumsan viverra
               urna nec iaculis.
-            </a>
+            </p>
           </Col>
           <Col lg={{ size: 3, offset: 1 }} className="project-buttons">
             {" "}

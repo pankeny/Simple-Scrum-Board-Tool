@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import avatar from "../assets/yoda.png";
 import { Button } from "reactstrap";
 import ProjectItem from "./Project/ProjectItem";
 

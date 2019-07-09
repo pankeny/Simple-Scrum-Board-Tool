@@ -38,26 +38,26 @@ class Header extends Component {
     return (
       <div>
         <Navbar className="navbar" dark expand="md">
-          <img src={brand} className="mx-2" />
+          <img src={brand} className="mx-2" alt="logo" />
           <NavbarBrand href="/">SSBT</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="#">
-                  <img src={add_project} className="mx-2" />
+                  <img src={add_project} className="mx-2" alt="new project" />
                   New Project
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="#">
-                  <img src={projects} className="mx-2" />
+                  <img src={projects} className="mx-2" alt="projects" />
                   Projects
                 </NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  <img src={profile} className="mx-2" />
+                  <img src={profile} className="mx-2" alt="profile" />
                   Profile
                 </DropdownToggle>
                 <DropdownMenu className="drop-down-m" right>
