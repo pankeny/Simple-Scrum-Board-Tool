@@ -6,23 +6,27 @@ import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AddProject from "./components/Project/AddProject";
+import { Provider } from "react-redux";
+import store from "./store";
 
 function App() {
   return (
-    <Router>
-      <div className="App Site">
-        <div className="Site-content">
-          <div className="App-header">
-            <Header />
+    <Provider store={store}>
+      <Router>
+        <div className="App Site">
+          <div className="Site-content">
+            <div className="App-header">
+              <Header />
+            </div>
+            <div className="main">
+              <Route exact path="/" component={Dashboard} />
+              <Route exact path="/addProject" component={AddProject} />
+            </div>
           </div>
-          <div className="main">
-            <Route exact path="/" component={Dashboard} />
-            <Route exact path="/addProject" component={AddProject} />
-          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </Router>
+      </Router>
+    </Provider>
   );
 }
 
