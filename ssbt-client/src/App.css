@@ -99,6 +99,10 @@ hr {
   font-weight: bold !important;
 }
 
+.new-proj-container p {
+  color: #fc5358;
+}
+
 /* ################################# HEADER ################################# */
 .navbar {
   background-color: #3f3957;
