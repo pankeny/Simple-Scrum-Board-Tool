@@ -99,7 +99,11 @@ hr {
   font-weight: bold !important;
 }
 
-.new-proj-container p {
+.input-error {
+  border: 3px solid #fc5358 !important;
+}
+
+.error-text {
   color: #fc5358;
 }
 
