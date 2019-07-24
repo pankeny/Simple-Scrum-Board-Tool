@@ -50,7 +50,7 @@ class Header extends Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">
+                <NavLink href="/dashboard">
                   <img src={projects} className="mx-2" alt="projects" />
                   Projects
                 </NavLink>
