@@ -4,6 +4,7 @@ import avatar from "../../assets/yoda.png";
 
 class ProjectItem extends Component {
   render() {
+    const { project } = this.props;
     return (
       <div className="project-item container-fluid mx-auto mt-4">
         <Row>
@@ -12,17 +13,8 @@ class ProjectItem extends Component {
             <p className="d-block ml-4">Username</p>
           </Col>
           <Col lg={{ size: 6 }} className="justify-text">
-            <p className="project-title">Example Project</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-              suscipit auctor ligula non condimentum. Fusce nec arcu nec lorem
-              consequat vulputate. Aliquam quis vestibulum sem, nec venenatis
-              mi. Ut imperdiet vel mi vitae congue. Class aptent taciti sociosqu
-              ad litora torquent per conubia nostra, per inceptos himenaeos. Sed
-              luctus nisi vitae augue tempus, feugiat malesuada urna
-              condimentum. Suspendisse at rutrum magna. Integer accumsan viverra
-              urna nec iaculis.
-            </p>
+            <p className="project-title">{project.projectName}</p>
+            <p>{project.projectIdentifier}</p>
           </Col>
           <Col lg={{ size: 3, offset: 1 }} className="project-buttons">
             {" "}

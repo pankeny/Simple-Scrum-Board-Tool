@@ -24,7 +24,6 @@ class AddProject extends Component {
   componentWillReceiveProps(props) {
     if (props.errors) {
       this.setState({ errors: props.errors });
-      console.log(this.state);
     }
   }
 
@@ -80,7 +79,7 @@ class AddProject extends Component {
                   value={this.state.projectIdentifier}
                   onChange={this.onChange}
                 />
-                {errors.projectName && (
+                {errors.projectIdentifier && (
                   <div className="error-text">{errors.projectIdentifier}</div>
                 )}
               </div>

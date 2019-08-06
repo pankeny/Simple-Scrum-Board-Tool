@@ -11,17 +11,17 @@ class Dashboard extends Component {
   }
 
   render() {
+    const { projects } = this.props.project;
+
     return (
       <div className="container-fluid mt-3">
         <h2>Projects</h2>
         <div className="new-project-section m-3">
           <CreateProjectButton />
           <hr />
-          <ProjectItem />
-          <ProjectItem />
-          <ProjectItem />
-          <ProjectItem />
-          <ProjectItem />
+          {projects.map(project => (
+            <ProjectItem key={project.id} project={project} />
+          ))}
         </div>
       </div>
     );
