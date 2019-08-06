@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Row, Col } from "reactstrap";
 import avatar from "../../assets/yoda.png";
+import { Link } from "react-router-dom";
 
 class ProjectItem extends Component {
   render() {
@@ -22,10 +23,12 @@ class ProjectItem extends Component {
               {" "}
               <span>Project Board</span>
             </Button>{" "}
-            <Button className="project-button d-block my-2 ml-auto">
-              {" "}
-              <span>Update Project</span>
-            </Button>{" "}
+            <Link
+              to={`/updateProject/${project.projectIdentifier}`}
+              className="btn btn-md project-button d-block my-2 ml-auto"
+            >
+              Update Project
+            </Link>{" "}
             <Button className="project-button d-block my-2 ml-auto">
               {" "}
               <span>Delete Project</span>
