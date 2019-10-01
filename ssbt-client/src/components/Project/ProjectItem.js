@@ -11,11 +11,11 @@ class ProjectItem extends Component {
         <Row>
           <Col lg={{ size: 2 }} className="project-user my-auto">
             <img src={avatar} alt="user avatar" />
-            <p className="d-block ml-4">Username</p>
+            <p className="d-block ml-4">{project.projectIdentifier}</p>
           </Col>
           <Col lg={{ size: 6 }} className="justify-text">
             <p className="project-title">{project.projectName}</p>
-            <p>{project.projectIdentifier}</p>
+            <p>{project.description}</p>
           </Col>
           <Col lg={{ size: 3, offset: 1 }} className="project-buttons">
             {" "}
