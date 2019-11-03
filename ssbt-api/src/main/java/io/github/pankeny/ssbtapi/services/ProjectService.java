@@ -1,7 +1,9 @@
 package io.github.pankeny.ssbtapi.services;
 
+import io.github.pankeny.ssbtapi.domain.Backlog;
 import io.github.pankeny.ssbtapi.domain.Project;
 import io.github.pankeny.ssbtapi.exceptions.ProjectIdException;
+import io.github.pankeny.ssbtapi.repositories.BacklogRepository;
 import io.github.pankeny.ssbtapi.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,19 +14,32 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
-    public Project saveOrUpdateProject(Project project){
+    @Autowired
+    private BacklogRepository backlogRepository;
 
+    public Project saveOrUpdateProject(Project project){
+        String projectIdentifier = project.getProjectIdentifier().toUpperCase();
         try{
-            project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            project.setProjectIdentifier(projectIdentifier);
+
+            if(project.getId() == null){
+                Backlog backlog = new Backlog();
+                project.setBacklog(backlog);
+                backlog.setProject(project);
+                backlog.setProjectIdentifier(projectIdentifier);
+            }
+
+            if(project.getId() != null){
+                project.setBacklog(backlogRepository.findByProjectIdentifier(projectIdentifier));
+            }
+
             return projectRepository.save(project);
         }catch (Exception ex) {
-            throw new ProjectIdException("Project ID '" + project.getProjectIdentifier().toUpperCase()+"' already exists");
+            throw new ProjectIdException("Project ID '" + projectIdentifier +"' already exists");
         }
-
     }
 
     public Project findProjectByIdentifier(String projectId){
-
         Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
 
             if(project == null){
@@ -46,7 +61,6 @@ public class ProjectService {
         }
 
         projectRepository.delete(project);
-
    }
 
 }

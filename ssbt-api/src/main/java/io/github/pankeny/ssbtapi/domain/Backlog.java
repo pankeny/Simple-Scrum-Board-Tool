@@ -1,9 +1,8 @@
 package io.github.pankeny.ssbtapi.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 public class Backlog {
@@ -17,6 +16,10 @@ public class Backlog {
     private String projectIdentifier;
 
     //One2One with project (one project has only one backlog)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="project_id", nullable = false) // good practise
+    @JsonIgnore
+    private Project project;
 
     //One2Many with projectTasks (one backlog can has many project tasks)
 
@@ -46,5 +49,13 @@ public class Backlog {
 
     public void setProjectIdentifier(String projectIdentifier) {
         this.projectIdentifier = projectIdentifier;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 }
