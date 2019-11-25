@@ -1,6 +1,7 @@
 package io.github.pankeny.ssbtapi.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -20,7 +21,7 @@ public class Project {
     @NotBlank(message = "Project identifier is required")
     @Size(min = 4, max = 5, message = "Please use 4 to 5 characters")
     @Column(unique = true, updatable = false)
-    private  String projectIdentifier;
+    private String projectIdentifier;
 
     @NotBlank(message = "Description cannot be blank")
     private String description;
@@ -39,15 +40,16 @@ public class Project {
     private Date updated_At;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
+    @JsonIgnore
     private Backlog backlog;
 
     @PrePersist
-    protected void onCreate(){
+    protected void onCreate() {
         this.created_At = new Date();
     }
 
     @PreUpdate
-    protected void onUpdate(){
+    protected void onUpdate() {
         this.updated_At = new Date();
     }
 

@@ -114,7 +114,7 @@ public class ProjectTask {
     }
 
     public void setProjectIdentifier(String projectIdentifier) {
-        this.projectIdentifier = projectIdentifier;
+        this.projectIdentifier = projectIdentifier.toUpperCase();
     }
 
     public Date getCreated_At() {
