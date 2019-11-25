@@ -29,7 +29,7 @@ public class ProjectService {
                 backlog.setProjectIdentifier(projectIdentifier);
             }
 
-            if(project.getId() != null){
+            if(project.getId() != null) {
                 project.setBacklog(backlogRepository.findByProjectIdentifier(projectIdentifier));
             }
 
