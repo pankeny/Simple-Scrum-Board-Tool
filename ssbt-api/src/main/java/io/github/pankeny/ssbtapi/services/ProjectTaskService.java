@@ -56,7 +56,7 @@ public class ProjectTaskService {
     public Iterable<ProjectTask> findBacklogById(String id) {
         Optional<Project> project = Optional.ofNullable(projectRepository.findByProjectIdentifier(id));
 
-        if(!project.isPresent()) {
+        if (!project.isPresent()) {
             throw new ProjectNotFoundException("Project with ID: '" + id + "' does not exist");
         }
 
@@ -64,6 +64,23 @@ public class ProjectTaskService {
     }
 
     public ProjectTask findPtByProjectSequence(String backlogId, String ptId) {
+
+        Backlog backlog = backlogRepository.findByProjectIdentifier(backlogId);
+
+        if (backlog == null) {
+            throw new ProjectNotFoundException("Project with ID: '" + backlogId + "' does not exist");
+        }
+
+        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(ptId);
+
+        if (projectTask == null) {
+            throw new ProjectNotFoundException("Project task: '" + ptId + "' not found");
+        }
+
+        if (!projectTask.getProjectIdentifier().equals(backlogId)) {
+            throw new ProjectNotFoundException("Project task: '" + ptId + "' does not exist in project: '" + backlogId + "'");
+        }
+
         return projectTaskRepository.findByProjectSequence(ptId);
     }
 }
