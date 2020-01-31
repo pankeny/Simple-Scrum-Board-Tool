@@ -10,6 +10,7 @@ import io.github.pankeny.ssbtapi.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -94,6 +95,7 @@ public class ProjectTaskService {
 
     public void deletePtByProjectSequence(String backlogId, String ptId) {
         ProjectTask projectTask = findPtByProjectSequence(backlogId, ptId);
+
         projectTaskRepository.delete(projectTask);
     }
 }
