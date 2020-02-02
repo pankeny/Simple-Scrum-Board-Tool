@@ -1,123 +1,135 @@
 /* ################################# MAIN ################################# */
 :root {
-  --space: 1.5em 0;
-  --space: 2em 0;
+    --space: 1.5em 0;
+    --space: 2em 0;
 }
 
 .App {
-  /* background-image: url("assets/background.jpg"); */
-  text-align: center;
-  /* background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; */
-  background-color: #7f7b86;
-  color: #f6f7f2;
+    /*background-image: url("assets/background.jpg");*/
+    text-align: center;
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    background-color: #7f7b86;
+    color: #f6f7f2;
 }
 
 .Site {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .Site-content {
-  flex: 1 0 auto;
-  padding: var(--space) var(--space) 0;
-  width: 100%;
+    flex: 1 0 auto;
+    padding: var(--space) var(--space) 0;
+    width: 100%;
 }
 
 .Site-content:after {
-  content: "\00a0";
-  display: block;
-  margin-top: var(--space);
-  height: 0;
-  visibility: hidden;
+    content: "\00a0";
+    display: block;
+    margin-top: var(--space);
+    height: 0;
+    visibility: hidden;
 }
 
 .justify-text {
-  text-align: justify;
+    text-align: justify;
 }
 
 /* ################################# DASHBOARD ################################# */
 .new-project-section {
-  text-align: left;
+    text-align: left;
 }
 
 .new-project-section p {
-  color: #f6f7f2;
+    color: #f6f7f2;
 }
 
 hr {
-  background-color: #f6f7f2;
-  size: 2em;
+    background-color: #f6f7f2;
+    size: 2em;
 }
 
 .project-button {
-  background-color: #f47c62 !important;
-  border-color: #f6f7f2 !important;
-  color: #f6f7f2 !important;
+    background-color: #f47c62 !important;
+    border-color: #f6f7f2 !important;
+    color: #f6f7f2 !important;
 }
 
 .project-button:hover,
 .project-button:active,
 .project-button:focus {
-  background-color: #f6f7f2 !important;
-  border-color: #f47c62 !important;
-  color: #f47c62 !important;
+    background-color: #f6f7f2 !important;
+    border-color: #f47c62 !important;
+    color: #f47c62 !important;
 }
 
 .project-item {
-  background-color: #d9b482;
-  min-height: 100px;
-  overflow: auto;
+    background-color: #d9b482;
+    min-height: 100px;
+    overflow: auto;
 }
 
 .project-item * {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
 .project-item button {
-  width: 90% !important;
+    width: 90% !important;
 }
 
 .project-title {
-  font-size: 20px;
-  font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 /* ############################### New Project ############################## */
 .new-proj-container {
-  background-color: #3f3957;
-  width: 100%;
-  height: 100%;
-  border-radius: 25px 25px;
+    background-color: #3f3957;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px 25px;
 }
 
 .new-proj-container form {
-  text-align: left;
-  font-size: 14px !important;
-  font-weight: bold !important;
+    text-align: left;
+    font-size: 14px !important;
+    font-weight: bold !important;
 }
 
 .input-error {
-  border: 3px solid #fc5358 !important;
+    border: 3px solid #fc5358 !important;
 }
 
 .error-text {
-  color: #fc5358;
+    color: #fc5358;
+}
+
+/* ################################# PROJECT BOARD ################################# */
+.col-header {
+    background-color: #d9b482;
+    text-align: center;
+    border-radius: 15px 15px;
+    border: #f6f7f2;
+}
+
+.col-header p {
+    font-size: 32px;
 }
 
 /* ################################# HEADER ################################# */
 .navbar {
-  background-color: #3f3957;
+    background-color: #3f3957;
 }
 
 /* ################################# FOOTER ################################# */
 .footer {
-  margin-top: 30px;
-  background-color: #3f3957;
+    margin-top: 30px;
+    background-color: #3f3957;
 }
 
 .footer-content {
-  margin: 10px auto 10px auto;
+    margin: 10px auto 10px auto;
 }

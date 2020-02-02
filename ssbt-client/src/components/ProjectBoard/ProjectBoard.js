@@ -9,16 +9,14 @@ class ProjectBoard extends Component {
                 {
                     //<!-- Backlog STARTS HERE -->
                 }
-                <h1>Project Board</h1>
+                <h2>Project Board</h2>
                 <div className="new-project-section m-3">
                     <AddProjectTaskButton id={this.props.match.params}/>
                     <hr/>
                     <div className="row">
                         <div className="col-md-4">
-                            <div className="card text-center mb-2">
-                                <div className="card-header bg-secondary text-white">
-                                    <h3>TO DO</h3>
-                                </div>
+                            <div className="col-header my-2">
+                                <p>TODO</p>
                             </div>
 
                             {
