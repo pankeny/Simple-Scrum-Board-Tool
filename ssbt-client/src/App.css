@@ -70,6 +70,8 @@ hr {
     background-color: #d9b482;
     min-height: 100px;
     overflow: auto;
+    border-radius: 3px 3px;
+    border: 1px solid #f6f7f2;
 }
 
 .project-item * {
@@ -107,16 +109,22 @@ hr {
     color: #fc5358;
 }
 
+.button-text {
+    color: #f47c62;
+}
+
 /* ################################# PROJECT BOARD ################################# */
 .col-header {
     background-color: #d9b482;
     text-align: center;
-    border-radius: 15px 15px;
-    border: #f6f7f2;
+    border-radius: 5px;
+    border: 1px solid #f6f7f2 !important;
 }
 
 .col-header p {
-    font-size: 32px;
+    margin: auto;
+    font-weight: bold;
+    font-size: 24px;
 }
 
 /* ################################# HEADER ################################# */
