@@ -4,7 +4,7 @@ class AddProjectTask extends Component {
     render() {
         return (
             <div className="container-fluid mt-3">
-                <h2>New project</h2>
+                <h2>New project task</h2>
                 <hr/>
                 <div className="container new-proj-container mt-5">
                     <div className="container m-5 m-auto p-4">
