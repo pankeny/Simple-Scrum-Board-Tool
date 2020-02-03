@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
 import AddProjectTaskButton from "./ProjectTasks/AddProjectTaskButton";
 
 class ProjectBoard extends Component {
