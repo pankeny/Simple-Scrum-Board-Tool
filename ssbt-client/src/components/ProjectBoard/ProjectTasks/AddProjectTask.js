@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux"
-import classname from "classnames"
+import classnames from "classnames"
 import {addProjectTask} from "../../../actions/backlogActions";
 import PropTypes from "prop-types"
 
@@ -24,6 +24,12 @@ class AddProjectTask extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({errors: nextProps.errors})
+        }
+    }
+
     onChange(e) {
         this.setState({[e.target.name]: e.target.value})
     }
@@ -44,6 +50,7 @@ class AddProjectTask extends Component {
     }
 
     render() {
+        const {errors} = this.state;
         return (
             <div className="container-fluid mt-3">
                 <h2>New project task</h2>
@@ -52,10 +59,19 @@ class AddProjectTask extends Component {
                     <div className="container m-5 m-auto p-4">
                         <form onSubmit={this.onSubmit}>
                             <div className="form-group">
-                                <input type="text" className="form-control form-control-lg" name="summary"
+                                <input type="text"
+                                       className={classnames("form-control form-control-lg", {
+                                           "input-error": errors.summary
+                                       })}
+                                       name="summary"
                                        placeholder="Project Task summary"
                                        value={this.state.summary}
                                        onChange={this.onChange}/>
+                                {
+                                    errors.summary && (
+                                        <div className="error-text">{errors.summary}</div>
+                                    )
+                                }
                             </div>
                             <div className="form-group">
                                     <textarea className="form-control form-control-lg" placeholder="Acceptance Criteria"
@@ -104,10 +120,16 @@ class AddProjectTask extends Component {
 }
 
 AddProjectTask.propTypes = {
-    addProjectTask: PropTypes.func.isRequired
+    addProjectTask: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
 };
 
+const mapStateToProps = state => ({
+    errors: state.errors
+})
+
+
 export default connect(
-    null,
+    mapStateToProps,
     {addProjectTask})
 (AddProjectTask);
