@@ -9,7 +9,6 @@ class ProjectBoard extends Component {
 
     constructor(props) {
         super(props);
-
     }
 
     componentDidMount() {
@@ -18,6 +17,9 @@ class ProjectBoard extends Component {
     }
 
     render() {
+
+        const {project_tasks} = this.props.backlog;
+
         return (
             <div className="container-fluid mt-3">
                 {
@@ -27,7 +29,7 @@ class ProjectBoard extends Component {
                 <div className="new-project-section m-3">
                     <AddProjectTaskButton id={this.props.match.params}/>
                     <hr/>
-                    <Backlog/>
+                    <Backlog project_tasks_prop={project_tasks}/>
                 </div>
             </div>
         );
