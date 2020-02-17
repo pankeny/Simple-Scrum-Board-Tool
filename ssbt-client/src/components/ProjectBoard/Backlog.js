@@ -15,28 +15,28 @@ class Backlog extends Component {
 
         return (
             <div className="row">
+
                 <div className="col-md-4">
                     <div className="col-header my-2">
                         <p>TODO</p>
                     </div>
                     {todoItems}
-                    <div className="col-md-4">
                 </div>
+
+                <div className="col-md-4">
                     <div className="col-header my-2">
                         <p>In Progress</p>
                     </div>
-
                     {inProgressItems}
-
                 </div>
+
                 <div className="col-md-4">
                     <div className="col-header my-2">
                         <p>Done</p>
                     </div>
-
                     {doneItems}
-
                 </div>
+
             </div>
         );
     }
