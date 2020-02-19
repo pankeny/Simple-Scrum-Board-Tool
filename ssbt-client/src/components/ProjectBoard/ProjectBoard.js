@@ -36,13 +36,13 @@ class ProjectBoard extends Component {
             if(pts.length < 1) {
                 if(errs.projectNotFound) {
                     return(
-                        <div className="alert alert-danger text-center" role="alert">
+                        <div className="alert bg-graphite input-error text-center" role="alert">
                             {errs.projectNotFound}
                         </div>
                     )
                 } else {
                     return (
-                        <div className="alert alert-info text-center" role="alert">
+                        <div className="alert bg-graphite brdr-info text-center" role="alert">
                             No project tasks on this board
                         </div>
                     )
@@ -56,9 +56,6 @@ class ProjectBoard extends Component {
 
         return (
             <div className="container-fluid mt-3">
-                {
-                    //<!-- Backlog STARTS HERE -->
-                }
                 <h2>Project Board</h2>
                 <div className="new-project-section m-3">
                     <AddProjectTaskButton id={this.props.match.params}/>
