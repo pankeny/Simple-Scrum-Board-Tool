@@ -7,17 +7,17 @@ class ProjectTask extends Component {
         let priorityClass;
 
         if (project_task.priority === 1) {
-            priorityClass = "bg-high";
+            priorityClass = "border-high";
             priorityString = "HIGH";
         }
 
         if (project_task.priority === 2) {
-            priorityClass = "bg-medium";
+            priorityClass = "border-medium";
             priorityString = "MEDIUM";
         }
 
         if (project_task.priority === 3) {
-            priorityClass = "bg-low";
+            priorityClass = "border-low";
             priorityString = "LOW";
         }
 
