@@ -7,25 +7,24 @@ class ProjectTask extends Component {
         let priorityClass;
 
         if (project_task.priority === 1) {
-            priorityClass = "bg-danger";
+            priorityClass = "bg-high";
             priorityString = "HIGH";
         }
 
         if (project_task.priority === 2) {
-            priorityClass = "bg-warning";
+            priorityClass = "bg-medium";
             priorityString = "MEDIUM";
         }
 
         if (project_task.priority === 3) {
-            priorityClass = "bg-info";
+            priorityClass = "bg-low";
             priorityString = "LOW";
         }
 
         return (
 
-            // Todo - define css class for priority that changes border color of card (not header bg like now)
-            <div className="card mb-1 bg-dark">
-                <div className={`card-header ${priorityClass}`}>
+            <div className={`card mb-1 bg-dark ${priorityClass}`}>
+                <div className={"card-header"}>
                     ID: {project_task.projectSequence} -- Priority: {priorityString}
                 </div>
                 <div className="card-body bg-dark">

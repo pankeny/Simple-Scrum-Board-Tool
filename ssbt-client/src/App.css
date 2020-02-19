@@ -132,6 +132,23 @@ hr {
     background-color: #3f3957;
 }
 
+/* ################################# PROJECT TASK ############################ */
+
+.bg-low {
+    border-radius: 3px 3px !important;
+    border: 4px solid #00a425 !important;
+}
+
+.bg-medium {
+    border-radius: 3px 3px !important;
+    border: 4px solid #c4a000 !important;
+}
+
+.bg-high {
+    border-radius: 3px 3px !important;
+    border: 4px solid #9e1712 !important;
+}
+
 /* ################################# FOOTER ################################# */
 .footer {
     margin-top: 30px;
