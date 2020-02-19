@@ -61,13 +61,27 @@ hr {
 .project-button:hover,
 .project-button:active,
 .project-button:focus {
-    background-color: #f6f7f2 !important;
-    border-color: #f47c62 !important;
-    color: #f47c62 !important;
+    background-color: #d66c56 !important;
+    border-color: #eaebe6 !important;
+    color: #f6f7f2 !important;
+}
+
+.danger-button {
+    background-color: #dc3545 !important;
+    border-color: #f6f7f2 !important;
+    color: #f6f7f2 !important;
+}
+
+.danger-button:hover,
+.danger-button:active,
+.danger-button:focus {
+    background-color: #c53342 !important;
+    border-color: #eaebe6 !important;
+    color: #f6f7f2 !important;
 }
 
 .project-item {
-    background-color: #d9b482;
+    background-color: #343a40;
     min-height: 100px;
     overflow: auto;
     border-radius: 3px 3px;
@@ -115,7 +129,7 @@ hr {
 
 /* ################################# PROJECT BOARD ################################# */
 .col-header {
-    background-color: #d9b482;
+    background-color: #343a40;
     text-align: center;
     border-radius: 5px;
     border: 1px solid #f6f7f2 !important;

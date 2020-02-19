@@ -36,7 +36,7 @@ class ProjectTask extends Component {
                         Update
                     </a>
 
-                    <button className="btn btn-danger ml-4">
+                    <button className="btn danger-button ml-3">
                         Delete
                     </button>
                 </div>

@@ -40,7 +40,7 @@ class ProjectItem extends Component {
             </Link>{" "}
             <Link
               onClick={this.onDeleteClick.bind(this, project.projectIdentifier)}
-              className="btn btn-md project-button d-block my-2 ml-auto"
+              className="btn btn-md danger-button d-block my-2 ml-auto"
             >
               Delete Project
             </Link>{" "}
