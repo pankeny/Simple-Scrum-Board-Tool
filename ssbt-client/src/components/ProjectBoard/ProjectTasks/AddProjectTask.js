@@ -42,7 +42,7 @@ class AddProjectTask extends Component {
             "acceptanceCriteria": this.state.acceptanceCriteria,
             "status": this.state.status,
             "priority": this.state.priority,
-            "dueDate": this.state.priority,
+            "dueDate": this.state.dueDate,
         };
 
         this.props.addProjectTask(this.state.projectIdentifier, newTask, this.props.history);
@@ -81,7 +81,11 @@ class AddProjectTask extends Component {
                             </div>
                             <h6>Due Date</h6>
                             <div className="form-group">
-                                <input type="date" className="form-control form-control-lg" name="dueDate"/>
+                                <input type="date"
+                                       className="form-control form-control-lg"
+                                       name="dueDate"
+                                       value={this.state.dueDate}
+                                       onChange={this.onChange}/>
                             </div>
                             <div className="form-group">
                                 <select className="form-control form-control-lg" name="priority"
