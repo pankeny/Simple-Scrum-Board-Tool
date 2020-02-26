@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classnames from "classnames";
-import {getProjectTask} from "../../../actions/backlogActions";
+import {getProjectTask, updateProjectTask} from "../../../actions/backlogActions";
 import {connect} from "react-redux";
 
 class UpdateProjectTask extends Component {
@@ -77,9 +77,9 @@ class UpdateProjectTask extends Component {
             dueDate: this.state.dueDate,
             projectIdentifier: this.state.projectIdentifier,
             created_At: this.state.created_At
-        }
+        };
 
-        console.log(updatedTask)
+        this.props.updateProjectTask(updatedTask, this.props.history)
     }
 
     render() {
@@ -146,7 +146,7 @@ class UpdateProjectTask extends Component {
                             <input
                                 type="submit"
                                 className="btn btn-md project-button btn-block mt-5"
-                                value="Create"
+                                value="Update"
                             />
                         </form>
                     </div>
@@ -159,11 +159,13 @@ class UpdateProjectTask extends Component {
 
 UpdateProjectTask.propTypes = {
     getProjectTask: PropTypes.func.isRequired,
+    updateProjectTask: PropTypes.func.isRequired,
     project_task: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    project_task: state.backlog.project_task
+    project_task: state.backlog.project_task,
+    errors: state.errors
 });
 
-export default connect(mapStateToProps, {getProjectTask})(UpdateProjectTask);
+export default connect(mapStateToProps, {getProjectTask, updateProjectTask})(UpdateProjectTask);
