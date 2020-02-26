@@ -6,12 +6,85 @@ import {connect} from "react-redux";
 
 class UpdateProjectTask extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: "",
+            projectSequence: "",
+            summary: "",
+            acceptanceCriteria: "",
+            status: "",
+            priority: "",
+            dueDate: "",
+            projectIdentifier: "",
+            created_At: "",
+            errors: {}
+        };
+
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
     componentDidMount() {
         const {backlog_id, pt_id} = this.props.match.params;
         this.props.getProjectTask(backlog_id, pt_id, this.props.history)
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({errors: nextProps.errors})
+        }
+
+        const {
+            id,
+            projectSequence,
+            summary,
+            acceptanceCriteria,
+            status,
+            priority,
+            dueDate,
+            projectIdentifier,
+            created_At
+        } = nextProps.project_task;
+
+        this.setState({
+            id,
+            projectSequence,
+            summary,
+            acceptanceCriteria,
+            status,
+            priority,
+            dueDate,
+            projectIdentifier,
+            created_At
+        });
+    }
+
+    onChange(e) {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+
+        const updatedTask = {
+            id: this.state.id,
+            projectSequence: this.state.projectSequence,
+            summary: this.state.summary,
+            acceptanceCriteria: this.state.acceptanceCriteria,
+            status: this.state.status,
+            priority: this.state.priority,
+            dueDate: this.state.dueDate,
+            projectIdentifier: this.state.projectIdentifier,
+            created_At: this.state.created_At
+        }
+
+        console.log(updatedTask)
+    }
+
     render() {
+        const {errors} = this.state;
+
         return (
             <div className="container-fluid mt-3">
                 <h2>Update project task</h2>
@@ -22,31 +95,35 @@ class UpdateProjectTask extends Component {
                             <div className="form-group">
                                 <input type="text"
                                        className={classnames("form-control form-control-lg", {
-                                           // "input-error": errors.summary
+                                           "input-error": errors.summary
                                        })}
                                        name="summary"
                                        placeholder="Project Task summary"
-                                    // value={this.state.summary}
+                                       value={this.state.summary}
                                        onChange={this.onChange}/>
                                 {
-                                    // errors.summary && (
-                                    //     <div className="error-text">{errors.summary}</div>
-                                    // )
+                                    errors.summary && (
+                                        <div className="error-text">{errors.summary}</div>
+                                    )
                                 }
                             </div>
                             <div className="form-group">
                                     <textarea className="form-control form-control-lg" placeholder="Acceptance Criteria"
                                               name="acceptanceCriteria"
-                                        // value={this.state.acceptanceCriteria}
+                                              value={this.state.acceptanceCriteria}
                                               onChange={this.onChange}/>
                             </div>
                             <h6>Due Date</h6>
                             <div className="form-group">
-                                <input type="date" className="form-control form-control-lg" name="dueDate"/>
+                                <input type="date"
+                                       className="form-control form-control-lg"
+                                       name="dueDate"
+                                       value={this.state.dueDate}
+                                       onChange={this.onChange}/>
                             </div>
                             <div className="form-group">
                                 <select className="form-control form-control-lg" name="priority"
-                                    // value={this.state.priority}
+                                        value={this.state.priority}
                                         onChange={this.onChange}>
                                     <option value={0}>Select Priority</option>
                                     <option value={1}>High</option>
@@ -57,7 +134,7 @@ class UpdateProjectTask extends Component {
 
                             <div className="form-group">
                                 <select className="form-control form-control-lg" name="status"
-                                    // value={this.state.status}
+                                        value={this.state.status}
                                         onChange={this.onChange}>
                                     <option value="">Select Status</option>
                                     <option value="TO_DO">TO DO</option>
