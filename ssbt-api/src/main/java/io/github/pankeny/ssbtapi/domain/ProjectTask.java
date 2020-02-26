@@ -1,5 +1,6 @@
 package io.github.pankeny.ssbtapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class ProjectTask {
 
     private Integer priority;
 
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date dueDate;
 
     //Many2One with backlog
@@ -36,8 +38,10 @@ public class ProjectTask {
     @Column(updatable = false)
     private String projectIdentifier;
 
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date created_At;
 
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updated_At;
 
     @PrePersist
