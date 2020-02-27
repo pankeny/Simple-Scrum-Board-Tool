@@ -1,4 +1,4 @@
-import {GET_BACKLOG, GET_PROJECT_TASK, DELETE_PROJECT_TASK} from "../actions/types";
+import {DELETE_PROJECT_TASK, GET_BACKLOG, GET_PROJECT_TASK} from "../actions/types";
 
 const initialState = {
     project_tasks: [],
@@ -22,9 +22,10 @@ export default function (state = initialState, action) {
 
         case DELETE_PROJECT_TASK : {
             return {
-                ...state
-
-                // ToDo : end action for delete project task
+                ...state,
+                project_tasks: state.project_tasks.filter(
+                    projectTask => projectTask.projectSequence !== action.payload
+                )
             }
         }
         default:
