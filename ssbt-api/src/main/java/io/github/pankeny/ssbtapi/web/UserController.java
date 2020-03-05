@@ -35,7 +35,7 @@ public class UserController {
         }
         User newUser = userService.saveUser(user);
 
-        return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
 }
