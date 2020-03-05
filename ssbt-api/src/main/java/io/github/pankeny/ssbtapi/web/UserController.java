@@ -3,6 +3,7 @@ package io.github.pankeny.ssbtapi.web;
 import io.github.pankeny.ssbtapi.domain.User;
 import io.github.pankeny.ssbtapi.services.MapValidationErrorService;
 import io.github.pankeny.ssbtapi.services.UserService;
+import io.github.pankeny.ssbtapi.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,15 +25,20 @@ public class UserController {
     @Autowired
     private MapValidationErrorService mapValidationErrorService;
 
+    @Autowired
+    private UserValidator userValidator;
+
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody User user, BindingResult result) {
 
-        // Todo - validate passwords match
+        userValidator.validate(user, result);
+        user.setConfirmPassword(""); // only for validating purpose - it isn't wanted to be displayed in the request response
 
         ResponseEntity<?> errorMap = mapValidationErrorService.mapValidationService(result);
         if (errorMap != null) {
             return errorMap;
         }
+
         User newUser = userService.saveUser(user);
 
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
