@@ -4,6 +4,7 @@ import io.github.pankeny.ssbtapi.domain.Backlog;
 import io.github.pankeny.ssbtapi.domain.Project;
 import io.github.pankeny.ssbtapi.domain.User;
 import io.github.pankeny.ssbtapi.exceptions.ProjectIdException;
+import io.github.pankeny.ssbtapi.exceptions.ProjectNotFoundException;
 import io.github.pankeny.ssbtapi.repositories.BacklogRepository;
 import io.github.pankeny.ssbtapi.repositories.ProjectRepository;
 import io.github.pankeny.ssbtapi.repositories.UserRepository;
@@ -43,33 +44,31 @@ public class ProjectService {
             }
 
             return projectRepository.save(project);
-        }catch (Exception ex) {
-            throw new ProjectIdException("Project ID '" + projectIdentifier +"' already exists");
+        } catch (Exception ex) {
+            throw new ProjectIdException("Project ID '" + projectIdentifier + "' already exists");
         }
     }
 
-    public Project findProjectByIdentifier(String projectId){
+    public Project findProjectByIdentifier(String projectId, String username) {
         Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
 
-            if(project == null){
-                throw new ProjectIdException("Project ID '" + projectId.toUpperCase() +"' does not exists");
-            }
-
-            return project;
-    }
-
-    public Iterable<Project> findAllProjects(){
-        return projectRepository.findAll();
-    }
-
-    public void deleteProjectByIdentifier(String projectid){
-        Project  project = projectRepository.findByProjectIdentifier(projectid);
-
-        if(project == null){
-            throw new ProjectIdException("Cannot delete project with ID '" + projectid + "'. This project does not exist");
+        if (project == null) {
+            throw new ProjectIdException("Project ID '" + projectId.toUpperCase() + "' does not exists");
         }
 
-        projectRepository.delete(project);
-   }
+        if (!project.getProjectLeader().equals(username)) {
+            throw new ProjectNotFoundException("Project not found in your account");
+        }
+
+        return project;
+    }
+
+    public Iterable<Project> findAllProjects(String username) {
+        return projectRepository.findAllByProjectLeader(username);
+    }
+
+    public void deleteProjectByIdentifier(String projectid, String username) {
+        projectRepository.delete(findProjectByIdentifier(projectid, username));
+    }
 
 }
