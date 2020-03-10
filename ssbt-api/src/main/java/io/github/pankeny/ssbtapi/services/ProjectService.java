@@ -2,9 +2,11 @@ package io.github.pankeny.ssbtapi.services;
 
 import io.github.pankeny.ssbtapi.domain.Backlog;
 import io.github.pankeny.ssbtapi.domain.Project;
+import io.github.pankeny.ssbtapi.domain.User;
 import io.github.pankeny.ssbtapi.exceptions.ProjectIdException;
 import io.github.pankeny.ssbtapi.repositories.BacklogRepository;
 import io.github.pankeny.ssbtapi.repositories.ProjectRepository;
+import io.github.pankeny.ssbtapi.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,19 +19,26 @@ public class ProjectService {
     @Autowired
     private BacklogRepository backlogRepository;
 
-    public Project saveOrUpdateProject(Project project){
+    @Autowired
+    private UserRepository userRepository;
+
+    public Project saveOrUpdateProject(Project project, String username) {
         String projectIdentifier = project.getProjectIdentifier().toUpperCase();
-        try{
+        try {
+            User user = userRepository.findByUsername(username);
+
+            project.setUser(user);
+            project.setProjectLeader(user.getUsername());
             project.setProjectIdentifier(projectIdentifier);
 
-            if(project.getId() == null){
+            if (project.getId() == null) {
                 Backlog backlog = new Backlog();
                 project.setBacklog(backlog);
                 backlog.setProject(project);
                 backlog.setProjectIdentifier(projectIdentifier);
             }
 
-            if(project.getId() != null) {
+            if (project.getId() != null) {
                 project.setBacklog(backlogRepository.findByProjectIdentifier(projectIdentifier));
             }
 
