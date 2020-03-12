@@ -10,8 +10,6 @@ import io.github.pankeny.ssbtapi.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class ProjectTaskService {
 
@@ -25,42 +23,34 @@ public class ProjectTaskService {
     @Autowired
     private ProjectRepository projectRepository;
 
-    public ProjectTask addProjectTask(String projectIdentifier, ProjectTask projectTask) {
+    @Autowired
+    private ProjectService projectService;
 
-        try {
-            Backlog backlog = backlogRepository.findByProjectIdentifier(projectIdentifier.toUpperCase());
+    public ProjectTask addProjectTask(String projectIdentifier, ProjectTask projectTask, String username) {
+        Backlog backlog = projectService.findProjectByIdentifier(projectIdentifier, username).getBacklog();
 
-            projectTask.setBacklog(backlog);
-            Integer backlogSequence = backlog.getPTSequence();
-            ++backlogSequence;
-            backlog.setPTSequence(backlogSequence);
+        projectTask.setBacklog(backlog);
+        Integer backlogSequence = backlog.getPTSequence();
+        ++backlogSequence;
+        backlog.setPTSequence(backlogSequence);
 
-            projectTask.setProjectSequence(projectIdentifier + "-" + backlogSequence);
-            projectTask.setProjectIdentifier(projectIdentifier);
+        projectTask.setProjectSequence(projectIdentifier + "-" + backlogSequence);
+        projectTask.setProjectIdentifier(projectIdentifier);
 
-            if (projectTask.getPriority() == null || projectTask.getPriority() == 0) {
-                projectTask.setPriority(3);
-            }
-
-            if (projectTask.getStatus() == null || projectTask.getStatus().isEmpty()) {
-                projectTask.setStatus("TO-DO");
-            }
-
-            return projectTaskRepository.save(projectTask);
-        } catch (Exception exception) {
-            throw new ProjectNotFoundException("Project not Found");
+        if (projectTask.getPriority() == null || projectTask.getPriority() == 0) {
+            projectTask.setPriority(3);
         }
 
+        if (projectTask.getStatus() == null || projectTask.getStatus().isEmpty()) {
+            projectTask.setStatus("TO-DO");
+        }
+
+        return projectTaskRepository.save(projectTask);
     }
 
-    public Iterable<ProjectTask> findBacklogById(String id) {
-        Optional<Project> project = Optional.ofNullable(projectRepository.findByProjectIdentifier(id));
-
-        if (!project.isPresent()) {
-            throw new ProjectNotFoundException("Project with ID: '" + id + "' does not exist");
-        }
-
-        return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
+    public Iterable<ProjectTask> findBacklogById(String id, String username) {
+        Project project = projectService.findProjectByIdentifier(id, username);
+        return project.getBacklog().getProjectTasks();
     }
 
     public ProjectTask findPtByProjectSequence(String backlogId, String ptId) {
