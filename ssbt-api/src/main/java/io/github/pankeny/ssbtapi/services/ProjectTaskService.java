@@ -10,7 +10,6 @@ import io.github.pankeny.ssbtapi.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,7 +38,7 @@ public class ProjectTaskService {
             projectTask.setProjectSequence(projectIdentifier + "-" + backlogSequence);
             projectTask.setProjectIdentifier(projectIdentifier);
 
-            if (projectTask.getPriority() == 0 || projectTask.getPriority() == null) {
+            if (projectTask.getPriority() == null || projectTask.getPriority() == 0) {
                 projectTask.setPriority(3);
             }
 
