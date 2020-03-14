@@ -130,10 +130,7 @@ AddProjectTask.propTypes = {
 
 const mapStateToProps = state => ({
     errors: state.errors
-})
+});
 
 
-export default connect(
-    mapStateToProps,
-    {addProjectTask})
-(AddProjectTask);
+export default connect(mapStateToProps, {addProjectTask})(AddProjectTask);

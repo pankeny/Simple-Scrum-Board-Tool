@@ -36,7 +36,7 @@ class Header extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App-header">
         <Navbar className="navbar" dark expand="md">
           <img src={brand} className="mx-2" alt="logo" />
           <NavbarBrand href="/">SSBT</NavbarBrand>
