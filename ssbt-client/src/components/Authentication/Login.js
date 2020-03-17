@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import classnames from "classnames";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import {login} from "../../actions/securityActions";
+import PropTypes from "prop-types";
 
 class Login extends Component {
 
@@ -17,12 +20,24 @@ class Login extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({errors: nextProps.errors})
+        }
+    }
+
     onChange(e) {
         this.setState({[e.target.name]: e.target.value})
     }
 
     onSubmit(e) {
+        e.preventDefault();
+        const LoginRequest = {
+            "username": this.state.username,
+            "password": this.state.password
+        }
 
+        this.props.login(LoginRequest)
     }
 
     render() {
@@ -36,30 +51,30 @@ class Login extends Component {
                                 <input
                                     type="text"
                                     className={classnames("form-control form-control-lg ", {
-                                        "input-error": errors.projectName
+                                        "input-error": errors.username
                                     })}
                                     placeholder="Email"
                                     name="username"
                                     value={this.state.username}
                                     onChange={this.onChange}
                                 />
-                                {errors.projectName && (
-                                    <div className="error-text">{errors.projectName}</div>
+                                {errors.username && (
+                                    <div className="error-text">{errors.username}</div>
                                 )}
                             </div>
                             <div className="form-group">
                                 <input
                                     type="password"
                                     className={classnames("form-control form-control-lg", {
-                                        "input-error": errors.projectIdentifier
+                                        "input-error": errors.password
                                     })}
                                     placeholder="Password"
                                     name="password"
                                     value={this.state.password}
                                     onChange={this.onChange}
                                 />
-                                {errors.projectIdentifier && (
-                                    <div className="error-text">{errors.projectIdentifier}</div>
+                                {errors.password && (
+                                    <div className="error-text">{errors.password}</div>
                                 )}
                             </div>
 
@@ -78,4 +93,14 @@ class Login extends Component {
     }
 }
 
-export default Login;
+Login.propTypes = {
+    login: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
+
+const mapStateToProps = state => ({
+    errors: state.errors
+});
+
+export default connect(mapStateToProps, {login})(Login);
