@@ -14,6 +14,27 @@ import AddProjectTask from "./components/ProjectBoard/ProjectTasks/AddProjectTas
 import UpdateProjectTask from "./components/ProjectBoard/ProjectTasks/UpdateProjectTask";
 import Login from "./components/Authentication/Login";
 import Register from "./components/Authentication/Register";
+import jwt_decode from "jwt-decode";
+import setJwtToken from "./securityUtils/setJwtToken";
+import {SET_CURRENT_USER} from "./actions/types";
+
+const jwtToken = localStorage.jwtToken;
+
+if (jwtToken) {
+    setJwtToken(jwtToken);
+    const decoded_jwtToken = jwt_decode(jwtToken);
+
+    store.dispatch({
+        type: SET_CURRENT_USER,
+        payload: decoded_jwtToken
+    });
+
+    const currentTime = Date.now() / 1000;
+
+    if (decoded_jwtToken.exp < currentTime) {
+        // window.location.href="/login";
+    }
+}
 
 function App() {
     return (
