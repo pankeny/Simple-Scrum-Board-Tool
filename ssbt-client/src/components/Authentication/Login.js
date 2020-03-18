@@ -81,7 +81,7 @@ class Login extends Component {
                             )}
                         </div>
 
-                        <a>Don't have account already? </a><Link className="link-text" to="/register">Sign
+                        Don't have account already? <Link className="link-text" to="/register">Sign
                         up!</Link>
 
                         <input

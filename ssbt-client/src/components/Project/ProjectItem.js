@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import { Row, Col } from "reactstrap";
+import React, {Component} from "react";
+import {Col, Row} from "reactstrap";
 import avatar from "../../assets/yoda.png";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { deleteProject } from "../../actions/projectActions";
+import {connect} from "react-redux";
+import {deleteProject} from "../../actions/projectActions";
 
 class ProjectItem extends Component {
-  onDeleteClick = id => {
-    this.props.deleteProject(id);
-  };
+    onDeleteClick = id => {
+        this.props.deleteProject(id);
+    };
 
-  render() {
-    const { project } = this.props;
-    return (
-      <div className="project-item container-fluid mx-auto mt-4">
+    render() {
+        const {project} = this.props;
+        return (
+            <div className="project-item container-fluid mx-auto mt-4">
         <Row>
           <Col lg={{ size: 2 }} className="project-user my-auto">
             <img src={avatar} alt="user avatar" />
@@ -38,12 +38,12 @@ class ProjectItem extends Component {
             >
               Update Project
             </Link>{" "}
-            <Link
-              onClick={this.onDeleteClick.bind(this, project.projectIdentifier)}
-              className="btn btn-md danger-button d-block my-2 ml-auto"
-            >
-              Delete Project
-            </Link>{" "}
+              <Link to={this}
+                    onClick={this.onDeleteClick.bind(this, project.projectIdentifier)}
+                    className="btn btn-md danger-button d-block my-2 ml-auto"
+              >
+                  Delete Project
+              </Link>{" "}
           </Col>
         </Row>
       </div>
