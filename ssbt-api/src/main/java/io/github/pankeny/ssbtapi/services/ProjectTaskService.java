@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProjectTaskService {
 
-
     @Autowired
     private BacklogRepository backlogRepository;
 
@@ -71,9 +70,9 @@ public class ProjectTaskService {
     }
 
     public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String backlogId, String ptId, String username) {
-        ProjectTask projectTask = findPtByProjectSequence(backlogId, ptId, username);
+        findPtByProjectSequence(backlogId, ptId, username);
 
-        projectTask = updatedTask;
+        ProjectTask projectTask= updatedTask;
 
         return projectTaskRepository.save(projectTask);
     }

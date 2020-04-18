@@ -9,7 +9,7 @@ class Backlog extends Component {
             <ProjectTask key={project_task.id} project_task={project_task}/>
         ));
 
-        let todoItems = Array.from(tasks.filter(task => task.props.project_task.status === "TO-DO"));
+        let todoItems = Array.from(tasks.filter(task => task.props.project_task.status === "TO_DO"));
         let inProgressItems = Array.from(tasks.filter(task => task.props.project_task.status === "IN_PROGRESS"));
         let doneItems = Array.from(tasks.filter(task => task.props.project_task.status === "DONE"));
 

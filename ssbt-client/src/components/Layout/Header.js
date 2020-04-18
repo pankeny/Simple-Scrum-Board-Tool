@@ -22,6 +22,7 @@ import logoutImg from "../../assets/logout-black-24.png";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {logout} from "../../actions/securityActions";
+import {Link} from "react-router-dom";
 
 class Header extends Component {
     constructor(props) {
@@ -50,13 +51,13 @@ class Header extends Component {
             <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ml-auto" navbar>
                     <NavItem>
-                        <NavLink href="/addProject">
+                        <NavLink tag={Link} to="/addProject">
                             <img src={add_project} className="mx-2" alt="new project"/>
                             New Project
                         </NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/dashboard">
+                        <NavLink tag={Link} to="/dashboard">
                             <img src={projects} className="mx-2" alt="projects"/>
                             Projects
                         </NavLink>
