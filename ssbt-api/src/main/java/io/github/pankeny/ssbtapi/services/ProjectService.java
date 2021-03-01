@@ -32,7 +32,9 @@ public class ProjectService {
                     && (!existingProject.getId().equals(project.getId()) || !existingProject.getProjectLeader().equals(username))) {
                 throw new ProjectNotFoundException("Project not found in your account");
             } else if (existingProject == null) {
-                throw new ProjectNotFoundException(String.format("Project with ID: '%s' cannot be updated, because it doesn't exist", projectIdentifier));
+                throw new ProjectNotFoundException(
+                        String.format("Project with ID: '%s' cannot be updated, because it doesn't exist", projectIdentifier)
+                );
             }
         }
 
